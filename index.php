@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Профиль пользователя</title>
+    <title>Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
@@ -120,7 +120,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Анимация кнопки
+
         document.getElementById('toggleButton').addEventListener('click', function() {
             const extraImage = document.getElementById('extraImage');
             const isHidden = extraImage.style.display === 'none';
@@ -129,7 +129,7 @@
             this.textContent = isHidden ? 
                 'Скрыть изображение' : 'Показать дополнительное изображение';
             
-            // Добавляем класс анимации при каждом клике
+
             if (isHidden) {
                 extraImage.classList.add('animate__fadeIn');
             }
