@@ -23,34 +23,9 @@
         </div>
     </nav>
     <div class="container mt-5">
-        <div class="story-container">
-            <div class="story-text">
-                <p>Well, Prince, so Genoa and Lucca are now just family estates of the Buonapartes. But I warn you, if you don’t tell me that this means war, if you still try to</p>
-            </div>
-            <img src="hack1.webp" alt="hack1" class="hacker-img">
-        </div>
-        <div class="text-center mt-4">
-            <button id="toggleButton" class="btn btn-primary">Open</button>
-        </div>
-        <div id="extraImage" class="mt-3 text-center" style="display: none;">
-            <img src="hack2.webp" alt="hack2" class="hacker-img">
-        </div>   
         <div class="mt-5">
-          <h2 class="text-center mb-4">Add New Post, <?php echo $_COOKIE['User']; ?></h2>
+          <h2 class="text-center mb-4">Welcome, <?php echo $_COOKIE['User']; ?></h2>
           <form action="profile.php" id="postForm" class="d-flex flex-column gap-3" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label class="form-label" for="postTitle">Post Title</label>
-                <input type="text" name="postTitle" class="form-control hacker-input" id="postTitle" placeholder="Enter post Title" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="postContent">Post Content</label>
-                <textarea name="postContent" class="form-control hacker-input" id="postContent" placeholder="Enter post Content" rows="5" required></textarea>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="file">Upload file</label>
-                <input type="file" name="file" class="form-control hacker-input" id="file">
-            </div>
-            <button class="btn btn-primary" type="submit" name="submit">Save Post</button>
           </form>
         </div>
     </div>
@@ -59,34 +34,26 @@
 </html>
 
 <?php
+
+    require_once('db.php');
+
     if (!isset($_COOKIE['User'])) {
         header('Location: /login.php');
         exit();
     }
-    require_once('db.php');
+
     $link=mysqli_connect('db','root','Test123','first');
+    $login = mysqli_real_escape_string($link, $_COOKIE['User']);
+    $sql = "SELECT * FROM users WHERE username='$login'";
+    $result = mysqli_query($link, $sql);
 
-    if (isset($_POST['submit'])) {
-        $title = $_POST['postTitle'];
-        $main_text = $_POST['postContent'];
-
-        if (!$title || !$main_text) die("no data post");
-        $sql="INSERT INTO posts (title, main_text) VALUES ('$title','$main_text')";
-        
-        if (!mysqli_query($link,$sql)) die("error insert data post");
-
-        if (!empty($_FILES["file"]))
-        {
-            if (((@$_FILES["file"]["type"] == "image/gif") || (@$_FILES["file"]["type"] == "image/jpeg")
-            || (@$_FILES["file"]["type"] == "image/png")) && (@$_FILES["file"]["size"] < 10240000))
-        }
-        {
-            move_uploaded_file(@$_FILES["file"]["tmp_name"], "upload/" . @$_FILES["file"]["name"]);
-            echo "Load in: " . "upload/" . $_FILES["file"]["name"];
-        }
-        else
-        {
-            echo "upload failed"
-        }
+    if (!$result || mysqli_num_rows($result) == 0) {
+    setcookie("User", "", time() - 3600);
+    header("Location: /login.php");
+    exit();
     }
+    
+    $user = mysqli_fetch_assoc($result);
+    mysqli_close($link);
+
 ?>
