@@ -13,7 +13,7 @@ services:
       - DATABASE_USER=root
       - DATABASE_PASSWORD=Test123
     depends_on:
-      - 127.0.0.1
+      - db
     networks:
       custom_network:
         ipv4_address: 172.20.0.22
