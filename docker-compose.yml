@@ -29,8 +29,10 @@ services:
     networks:
       custom_network:
         ipv4_address: 172.20.0.23
+        
 volumes:
   db_data: {}
+  
 networks:
   custom_network:
     driver: bridge
