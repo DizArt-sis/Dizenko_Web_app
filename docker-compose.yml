@@ -18,7 +18,11 @@ services:
       custom_network:
         ipv4_address: 172.20.0.22
   127.0.0.1: 
+<<<<<<< HEAD
     image: maria:latest
+=======
+    image: mariadb:latest
+>>>>>>> 44a6d8f5644cb99c2615f1466ca5ea4daf3d6754
     environment:
       MYSQL_DATABASE: first
       MYSQL_USER: user
