@@ -53,7 +53,7 @@
     exit();
     }
     
-    $user = mysqli_fetch_assoc($result);
+    $username = mysqli_fetch_assoc($result);
     mysqli_close($link);
 
 ?>
