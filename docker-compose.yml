@@ -17,7 +17,7 @@ services:
     networks:
       custom_network:
         ipv4_address: 172.20.0.22
-  127.0.0.1: 
+  db: 
     image: mariadb:latest
     environment:
       MYSQL_DATABASE: first
@@ -25,12 +25,12 @@ services:
       MYSQL_PASSWORD: Test123
       MYSQL_ROOT_PASSWORD: Test123
     volumes:
-      - 127.0.0.1_data:/var/lib/mysql
+      - db_data:/var/lib/mysql
     networks:
       custom_network:
         ipv4_address: 172.20.0.23
 volumes:
-  127.0.0.1_data: {}
+  db_data: {}
 networks:
   custom_network:
     driver: bridge
