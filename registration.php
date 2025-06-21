@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h1 class="mb-4">Registration</h1>
-                <form action="/login.php" method="POST" class="d-flex flex-column gap-3">
+                <form action="/registration.php" method="POST" class="d-flex flex-column gap-3">
                     <input type="text" name="login" class="form-control-hacker-input" placeholder="login">
                     <input type="email" name="email" class="form-control-hacker-input" placeholder="email">
                     <input type="password" name="password" class="form-control-hacker-input" placeholder="password">
