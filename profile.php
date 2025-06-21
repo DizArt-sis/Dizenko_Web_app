@@ -36,7 +36,6 @@
             <img src="hack2.webp" alt="hack2" class="hacker-img">
         </div>   
         <div class="mt-5">
-          <h2 class="text-center mb-4">Добро пожаловать, <?php echo $username; ?>!</h2>
           <h2 class="text-center mb-4">Add New Post <?php $username1 = $_COOKIE['User']; echo "$username1"; ?></h2>
           <form action="profile.php" id="postForm" class="d-flex flex-column gap-3" method="POST" enctype="multipart/form-data">
             <div class="form-group">
