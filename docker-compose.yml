@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:80"
     environment:
-      - DATABASE_HOST=127.0.0.1
+      - DATABASE_HOST=db
       - DATABASE_PORT=3306
       - DATABASE_NAME=first
       - DATABASE_USER=root
